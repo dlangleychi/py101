@@ -1,0 +1,27 @@
+'''
+P: make a function to return the sum of a strings utf-16
+    character values
+E: 'a' -> 97, 'aa' -> 194, '' -> 0
+D: variable to collect sum
+A: loop through string and add ord value of every character
+C: below
+'''
+
+def utf16_value(string):
+    result = 0
+    for char in string:
+        result += ord(char)
+    return result
+
+# These examples should all print True
+print(utf16_value('Four score') == 984)
+print(utf16_value('Launch School') == 1251)
+print(utf16_value('a') == 97)
+print(utf16_value('') == 0)
+
+# The next three lines demonstrate that the code
+# works with non-ASCII characters from the UTF-16
+# character set.
+OMEGA = "\u03A9"              # UTF-16 character 'Ω' (omega)
+print(utf16_value(OMEGA) == 937)
+print(utf16_value(OMEGA + OMEGA + OMEGA) == 2811)
