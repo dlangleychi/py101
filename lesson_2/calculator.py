@@ -28,28 +28,36 @@ def invalid_number(number_str):
 
     return False
 
-prompt(MESSAGES['welcome'])
+prompt("For Spanish please enter 2.")
+language_choice = input()
+
+if language_choice == '2':
+    LANGUAGE = 'ESP'
+else:
+    LANGUAGE = 'ENG'
+
+prompt(MESSAGES[LANGUAGE]['welcome'])
 
 while True:
-    prompt(MESSAGES['first'])
+    prompt(MESSAGES[LANGUAGE]['first'])
     number1 = input()
 
     while invalid_number(number1):
-        prompt(MESSAGES['invalid_number'])
+        prompt(MESSAGES[LANGUAGE]['invalid_number'])
         number1 = input()
 
-    prompt(MESSAGES['second'])
+    prompt(MESSAGES[LANGUAGE]['second'])
     number2 = input()
 
     while invalid_number(number2):
-        prompt(MESSAGES['invalid_number'])
+        prompt(MESSAGES[LANGUAGE]['invalid_number'])
         number2 = input()
 
-    prompt(MESSAGES['operation'])
+    prompt(MESSAGES[LANGUAGE]['operation'])
     operation = input()
 
     while operation not in ['1', '2', '3', '4']:
-        prompt(MESSAGES['invalid_operation'])
+        prompt(MESSAGES[LANGUAGE]['invalid_operation'])
         operation = input()
 
     match operation:
@@ -64,11 +72,8 @@ while True:
 
     prompt(f'The result is: {output}')
 
-    prompt(MESSAGES['another?'])
+    prompt(MESSAGES[LANGUAGE]['another?'])
     answer = input()
 
     if answer and answer[0].lower() != 'y':
         break
-
-
-
