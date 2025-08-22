@@ -23,7 +23,7 @@ def invalid_number(number_str):
 
     return False
 
-def do_calculation():
+while True:
     prompt("What's the first number?")
     number1 = input()
 
@@ -58,21 +58,11 @@ def do_calculation():
 
     prompt(f'The result is: {output}')
 
-    prompt("""Would you like to perform another calculation?
-    yes or no""")
+    prompt("Would you like to perform another operation? (y/n) ")
     answer = input()
 
-    while answer not in ['yes', 'no']:
-        prompt("Please answer yes or no.")
-        answer = input()
-
-    if answer == 'yes':
-        do_calculation()
-
-prompt('Welcome to Calculator!')
-
-do_calculation()
-
+    if answer and answer[0].lower() != 'y':
+        break
 
 
 
