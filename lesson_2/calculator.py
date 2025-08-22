@@ -67,7 +67,7 @@ while True:
         case '4':
             output = float(number1) / float(number2)
 
-    prompt(f'The result is: {output}')
+    prompt(messages('result', LANGUAGE).format(output=output))
 
     prompt(messages('another?', LANGUAGE))
     answer = input()
