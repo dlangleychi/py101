@@ -15,7 +15,7 @@ C: below
 import json
 
 with open('calculator_messages.json', 'r') as file:
-    data = json.load(file)
+    MESSAGES = json.load(file)
 
 def prompt(message):
     print(f'==> {message}')
@@ -28,27 +28,28 @@ def invalid_number(number_str):
 
     return False
 
+prompt(MESSAGES['welcome'])
+
 while True:
-    prompt("What's the first number?")
+    prompt(MESSAGES['first'])
     number1 = input()
 
     while invalid_number(number1):
-        prompt(data['invalid_num'])
+        prompt(MESSAGES['invalid_number'])
         number1 = input()
 
-    prompt("What's the second number?")
+    prompt(MESSAGES['second'])
     number2 = input()
 
     while invalid_number(number2):
-        prompt(data['invalid_num'])
+        prompt(MESSAGES['invalid_number'])
         number2 = input()
 
-    prompt("""What operation would you like to perform?
-    1) Add 2) Subtract 3) Multiply 4) Divide""")
+    prompt(MESSAGES['operation'])
     operation = input()
 
     while operation not in ['1', '2', '3', '4']:
-        prompt("You must choose 1, 2, 3, or 4.")
+        prompt(MESSAGES['invalid_operation'])
         operation = input()
 
     match operation:
@@ -63,7 +64,7 @@ while True:
 
     prompt(f'The result is: {output}')
 
-    prompt("Would you like to perform another operation? (y/n) ")
+    prompt(MESSAGES['another?'])
     answer = input()
 
     if answer and answer[0].lower() != 'y':
