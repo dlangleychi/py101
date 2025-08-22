@@ -12,6 +12,11 @@ A: none
 C: below
 '''
 
+import json
+
+with open('calculator_messages.json', 'r') as file:
+    data = json.load(file)
+
 def prompt(message):
     print(f'==> {message}')
 
@@ -28,14 +33,14 @@ while True:
     number1 = input()
 
     while invalid_number(number1):
-        prompt("Hmm... that doesn't look like a valid number.")
+        prompt(data['invalid_num'])
         number1 = input()
 
     prompt("What's the second number?")
     number2 = input()
 
     while invalid_number(number2):
-        prompt("Hmm... that doesn't look like a valid number.")
+        prompt(data['invalid_num'])
         number2 = input()
 
     prompt("""What operation would you like to perform?
