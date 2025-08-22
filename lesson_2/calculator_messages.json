@@ -1,5 +1,5 @@
 {
-    "ENG": {
+    "en": {
         "welcome": "Welcome to Calculator!",
         "first": "What's the first number?",
         "invalid_number": "Hmm... that doesn't look like a valid number.",
@@ -8,7 +8,7 @@
         "invalid_operation": "You must choose 1, 2, 3, or 4.",
         "another?": "Would you like to perform another operation? (y/n) "
     },
-    "ESP": {
+    "es": {
         "welcome": "¡Bienvenido a la Calculadora!",
         "first": "¿Cuál es el primer número?",
         "invalid_number": "Mmm... ese no parece un número válido.",

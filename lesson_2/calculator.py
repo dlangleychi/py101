@@ -14,8 +14,13 @@ C: below
 
 import json
 
+LANGUAGE = 'en'
+
 with open('calculator_messages.json', 'r') as file:
     MESSAGES = json.load(file)
+
+def messages(message, lang='en'):
+    return MESSAGES[lang][message]
 
 def prompt(message):
     print(f'==> {message}')
@@ -28,36 +33,28 @@ def invalid_number(number_str):
 
     return False
 
-prompt("For Spanish please enter 2.")
-language_choice = input()
-
-if language_choice == '2':
-    LANGUAGE = 'ESP'
-else:
-    LANGUAGE = 'ENG'
-
-prompt(MESSAGES[LANGUAGE]['welcome'])
+prompt(messages('welcome', LANGUAGE))
 
 while True:
-    prompt(MESSAGES[LANGUAGE]['first'])
+    prompt(messages('first', LANGUAGE))
     number1 = input()
 
     while invalid_number(number1):
-        prompt(MESSAGES[LANGUAGE]['invalid_number'])
+        prompt(messages('invalid_number', LANGUAGE))
         number1 = input()
 
-    prompt(MESSAGES[LANGUAGE]['second'])
+    prompt(messages('second', LANGUAGE))
     number2 = input()
 
     while invalid_number(number2):
-        prompt(MESSAGES[LANGUAGE]['invalid_number'])
+        prompt(messages('invalid_number', LANGUAGE))
         number2 = input()
 
-    prompt(MESSAGES[LANGUAGE]['operation'])
+    prompt(messages('operation', LANGUAGE))
     operation = input()
 
     while operation not in ['1', '2', '3', '4']:
-        prompt(MESSAGES[LANGUAGE]['invalid_operation'])
+        prompt(messages('invalid_operation', LANGUAGE))
         operation = input()
 
     match operation:
@@ -72,7 +69,7 @@ while True:
 
     prompt(f'The result is: {output}')
 
-    prompt(MESSAGES[LANGUAGE]['another?'])
+    prompt(messages('another?', LANGUAGE))
     answer = input()
 
     if answer and answer[0].lower() != 'y':
