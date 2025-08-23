@@ -1,0 +1,7 @@
+{
+    "loan_amount": "Please enter a loan amount ($'s). ",
+    "apr": "Please enter annual percentage rate (%). ",
+    "loan_duration": "Please enter loan duration (years). ",
+    "invalid_input": "Please enter a positive number",
+    "result": "Monthly loan payment is ${payment:.2f}."
+}
