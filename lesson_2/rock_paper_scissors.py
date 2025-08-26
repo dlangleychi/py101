@@ -10,48 +10,42 @@ import random
 
 VALID_CHOICES = ['rock', 'paper', 'scissors', 'spock', 'lizard']
 
-WINNING_SCORE = 3
+WINNING_COMBINATIONS = {
+    'rock': ['scissors', 'lizard'],
+    'paper': ['rock', 'spock'],
+    'scissors': ['paper', 'lizard'],
+    'spock': ['rock', 'scissors'],
+    'lizard': ['paper', 'spock'],
+}
+
 STARTING_SCORE = 0
+WINNING_SCORE = 3
 
 def prompt(message):
     print(f'==> {message}')
 
 def interpret_choice(choice_input):
     for valid_choice in VALID_CHOICES:
-        if choice_input in valid_choice:
+        if choice_input and choice_input.lower() in valid_choice:
             return valid_choice
     return None
 
+def return_winner(player, computer):
+    if computer in WINNING_COMBINATIONS[player]:
+        return 'player'
+    if player != computer:
+        return 'computer'
+    return None
+
 def display_winner(player, computer):
-    if ((player == 'rock' and computer in ['scissors', 'lizard']) or
-        (player == 'paper' and computer in ['rock', 'spock']) or
-        (player == 'scissors' and computer in ['paper', 'lizard']) or
-        (player == 'spock' and computer in ['rock', 'scissors']) or
-        (player == 'lizard' and computer in ['paper', 'spock'])):
+    round_winner = return_winner(player, computer)
+
+    if round_winner == 'player':
         prompt('You win!')
-    elif ((player == 'rock' and computer in ['paper', 'spock']) or
-        (player == 'paper' and computer in ['scissors', 'lizard']) or
-        (player == 'scissors' and computer in ['rock', 'spock']) or
-        (player == 'spock' and computer in ['paper', 'lizard']) or
-        (player == 'lizard' and computer in ['rock', 'scissors'])):
+    elif round_winner == 'computer':
         prompt('Computer wins!')
     else:
         prompt('It\'s a tie!')
-
-def return_winner(player, computer):
-    if ((player == 'rock' and computer in ['scissors', 'lizard']) or
-        (player == 'paper' and computer in ['rock', 'spock']) or
-        (player == 'scissors' and computer in ['paper', 'lizard']) or
-        (player == 'spock' and computer in ['rock', 'scissors']) or
-        (player == 'lizard' and computer in ['paper', 'spock'])):
-        return 'player'
-    if ((player == 'rock' and computer in ['paper', 'spock']) or
-        (player == 'paper' and computer in ['scissors', 'lizard']) or
-        (player == 'scissors' and computer in ['rock', 'spock']) or
-        (player == 'spock' and computer in ['paper', 'lizard']) or
-        (player == 'lizard' and computer in ['rock', 'scissors'])):
-        return 'computer'
-    return None
 
 while True:
     player_score = STARTING_SCORE
